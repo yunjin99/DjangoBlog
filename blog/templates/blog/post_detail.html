@@ -73,13 +73,20 @@
 
         <hr>
 
-        <!-- Preview Image -->
-        <img class="img-fluid rounded" src="{{ post.head_image.url }}" alt="">
 
+          {% if post.head_image %}
+            <!-- Preview Image -->
+            <img class="img-fluid rounded" src="{{ post.head_image.url }}" alt="">
+          {% endif %}
         <hr>
 
         <!-- Post Content -->
         <p>{{ post.content }}</p>
+
+        {% if post.attached_file %}
+            <a href="{{ post.attached_file.url }}" type="button" class="btn btn-outline-dark" download>첨부파일 다운로드</a>
+            {{ post.get_file_name }}
+        {% endif %}
         <hr>
 
         <!-- Comments Form -->
