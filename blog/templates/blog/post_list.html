@@ -5,9 +5,16 @@
 {% endblock %}
 
 {%  block main_area %}
+                {% if user.is_authenticated %}
+                    {% if user.is_staff or user.is_superuser %}
+                        <a href="/blog/create_post" role="button">Create Post</a>
+                    {% endif %}
+                {% endif %}
+
                 <h1>Blog
                     {% if category %} in category '{{ category }}' {% endif %}
                     {% if tag %} with tag '{{ tag }}' {% endif %}
+
                 </h1>
 
                 {% for p in post_list %}
