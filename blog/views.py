@@ -117,11 +117,12 @@ def addComment(request, pk):
 
         if request.method == 'POST':
             comment_form = CommentForm(request.POST)
-            comment = comment_form.save(commit=False)
-            comment.author = request.user
-            comment.post = post
-            comment.save()
-            return redirect(comment.get_absolute_url())
+            if comment_form.is_valid():
+                comment = comment_form.save(commit=False)
+                comment.author = request.user
+                comment.post = post
+                comment.save()
+                return redirect(comment.get_absolute_url())
 
         else:
             return redirect(post.get_absolute_url())

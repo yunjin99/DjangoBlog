@@ -55,8 +55,7 @@
         <div class="card my-4">
           <h5 class="card-header">Leave a Comment:</h5>
           <div class="card-body">
-            <form method="post" action="{{ post.get_absolute_url }}addcomment/">
-                {% csrf_token %}
+            <form method="post" action="{{ post.get_absolute_url }}addcomment/">{% csrf_token %}
               {{ comment_form | crispy }}
               <button type="submit" class="btn btn-primary">Submit</button>
             </form>
